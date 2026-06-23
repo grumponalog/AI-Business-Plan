@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinyl AI — Master Business Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#ECE8E2;--teal-deep:#0D5A67;--teal:#006778;--teal-bright:#0097A7;--teal-light:#80C6C6;--orange:#DC8044;--peach:#FFBA7B;--charcoal:#333333;--maroon:#803038;--white:#fff;--input:#FFF1DC;--input-border:#DC8044;--row:#F4F1EC;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;color:var(--teal-deep);background:var(--cream);font-size:17px;line-height:1.65;font-weight:300;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;top:-20%;right:-15%;width:70vw;height:70vw;max-width:900px;max-height:900px;background:radial-gradient(ellipse at center,rgba(220,128,68,.25) 0%,rgba(255,186,123,.18) 25%,rgba(220,128,68,.08) 50%,transparent 70%);border-radius:50%;pointer-events:none;z-index:0;filter:blur(40px);}
+.page-header{position:relative;z-index:1;padding:40px 40px 0;text-align:center;}
+.vinyl-wordmark{margin-bottom:30px;line-height:0;}.vinyl-wordmark svg{height:26px;width:auto;}
+.hero-title{font-weight:400;font-size:clamp(32px,5vw,50px);color:var(--teal-deep);letter-spacing:-1px;line-height:1.15;max-width:780px;margin:0 auto;}
+.hero-sub{font-weight:300;font-size:clamp(16px,2.1vw,20px);max-width:660px;margin:18px auto 0;line-height:1.6;opacity:.8;}
+.hero-meta{font-family:'JetBrains Mono';font-size:12px;letter-spacing:.5px;color:var(--teal);margin-top:14px;text-transform:uppercase;}
+/* TAB MENU */
+.tabbar{position:sticky;top:0;z-index:20;background:rgba(236,232,226,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--teal-light);margin-top:30px;}
+.tabbar-inner{max-width:980px;margin:0 auto;display:flex;flex-wrap:nowrap;overflow-x:auto;gap:4px;padding:8px 16px;scrollbar-width:thin;}
+.tab{font-family:'JetBrains Mono';font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--teal-deep);background:transparent;border:none;border-radius:8px;padding:9px 14px;cursor:pointer;white-space:nowrap;transition:.15s;}
+.tab:hover{background:rgba(0,103,120,.08);}
+.tab.active{background:var(--teal-deep);color:var(--cream);}
+.container{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:36px 40px 100px;}
+.panel{display:none;animation:fade .25s ease;}
+.panel.active{display:block;}
+@keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+h2{font-size:clamp(25px,3.2vw,33px);font-weight:400;letter-spacing:-.5px;margin-bottom:14px;line-height:1.2;}
+h2.first{margin-top:0;}
+h3{font-size:19px;font-weight:500;margin-top:26px;margin-bottom:10px;}
+p{margin-bottom:16px;}ul,ol{margin:12px 0 18px 24px;}li{margin-bottom:9px;}li strong,p strong{font-weight:500;}
+a{color:var(--teal-bright);text-decoration:none;}a:hover{text-decoration:underline;}
+code{background:rgba(0,103,120,.06);padding:3px 9px;border-radius:6px;font-size:14px;font-family:'JetBrains Mono';color:var(--teal-deep);}
+.block{margin-bottom:14px;}
+.section-label{font-family:'JetBrains Mono';font-weight:300;font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--teal);display:inline-block;border-bottom:2px solid var(--peach);padding-bottom:3px;margin:36px 0 14px;}
+.section-label.top{margin-top:0;}
+.card{background:var(--white);border-radius:14px;padding:24px 26px;box-shadow:0 2px 14px rgba(13,90,103,.06);margin:16px 0;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.callout{border-radius:12px;padding:18px 22px;margin:18px 0;background:var(--white);border-left:5px solid var(--teal-bright);}
+.callout.warn{border-left-color:var(--maroon);background:#FBEEE6;}
+.callout.input{border-left-color:var(--orange);background:var(--input);}
+.callout .lab{font-family:'JetBrains Mono';font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--teal);display:block;margin-bottom:6px;}
+.callout.warn .lab{color:var(--maroon);}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px;background:var(--white);border-radius:10px;overflow:hidden;}
+th{background:var(--teal);color:#fff;font-weight:500;text-align:left;padding:10px 12px;font-size:14px;}
+td{padding:9px 12px;border-bottom:1px solid #eee5da;}tr:last-child td{border-bottom:none;}
+td.num{text-align:right;font-family:'JetBrains Mono';font-size:14px;}
+.tag{display:inline-block;font-family:'JetBrains Mono';font-size:10px;letter-spacing:.5px;text-transform:uppercase;background:var(--orange);color:#fff;border-radius:4px;padding:2px 6px;vertical-align:middle;margin-left:4px;}
+.tag.prop{background:var(--teal-light);color:var(--teal-deep);}
+.needs-input{background:var(--input);outline:1px dashed var(--input-border);}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0;}
+.tile{background:var(--white);border-radius:12px;padding:16px;text-align:center;box-shadow:0 2px 12px rgba(13,90,103,.06);}
+.tile .v{font-size:25px;font-weight:500;color:var(--teal-deep);line-height:1.1;}
+.tile .k{font-family:'JetBrains Mono';font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--teal);margin-top:6px;}
+.tile .s{font-size:11px;opacity:.6;margin-top:3px;}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;}
+.swot .q{background:var(--white);border-radius:14px;padding:22px 24px;box-shadow:0 2px 14px rgba(13,90,103,.06);border-top:4px solid var(--teal);}
+.swot .q.s{border-top-color:var(--teal-deep);}.swot .q.w{border-top-color:var(--maroon);}.swot .q.o{border-top-color:var(--orange);}.swot .q.t{border-top-color:var(--charcoal);}
+.swot .q h3{margin-top:0;display:flex;align-items:center;gap:8px;}
+.swot .q .badge{font-family:'JetBrains Mono';font-size:11px;color:#fff;border-radius:5px;padding:2px 8px;}
+.q.s .badge{background:var(--teal-deep);}.q.w .badge{background:var(--maroon);}.q.o .badge{background:var(--orange);}.q.t .badge{background:var(--charcoal);}
+.swot ul{margin:6px 0 0 18px;}.swot li{margin-bottom:8px;font-size:15px;}
+.model{background:var(--white);border-radius:16px;padding:8px 24px 28px;box-shadow:0 2px 18px rgba(13,90,103,.08);margin-top:10px;}
+.scenarios{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 6px;}
+.scbtn{font-family:'JetBrains Mono';font-size:13px;border:1px solid var(--teal-light);background:var(--white);color:var(--teal-deep);border-radius:8px;padding:8px 16px;cursor:pointer;transition:.15s;}
+.scbtn.active{background:var(--teal-deep);color:var(--cream);border-color:var(--teal-deep);}
+.inputs{display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;margin-top:14px;}
+.inp{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid #f0eae0;padding:6px 0;}
+.inp label{font-size:14px;flex:1;}
+.inp input{width:108px;font-family:'JetBrains Mono';font-size:14px;text-align:right;padding:6px 8px;border-radius:6px;border:1px solid var(--input-border);background:var(--input);color:var(--teal-deep);}
+.inp .u{font-family:'JetBrains Mono';font-size:11px;color:var(--teal);width:34px;text-align:left;}
+.modeltable{font-size:13px;}.modeltable th,.modeltable td{padding:7px 8px;text-align:right;}
+.modeltable th:first-child,.modeltable td:first-child{text-align:left;}
+.note{font-size:13px;opacity:.75;font-style:italic;}
+.footer-bar{background:var(--teal);padding:36px 40px;margin-top:60px;position:relative;z-index:1;}
+.footer-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-wordmark{line-height:0;}.footer-wordmark svg{height:22px;width:auto;}
+.footer-meta{font-family:'JetBrains Mono';font-size:12px;color:var(--teal-light);letter-spacing:.5px;}
+@media(max-width:700px){.grid2,.grid3,.inputs,.swot,.tiles{grid-template-columns:1fr;}.tiles{grid-template-columns:1fr 1fr;}.page-header,.container{padding-left:20px;padding-right:20px;}.model{padding:8px 14px 22px;}.modeltable{font-size:11px;}.modeltable th,.modeltable td{padding:5px 4px;}}
+</style>
+</head>
+<body>
+<div class="page-header">
+  <div class="vinyl-wordmark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1520 346" fill="none"><path d="M67.2911 5.50427L153.389 200.364C156.561 207.564 166.839 207.505 169.951 200.306L253.818 5.56281C255.227 2.22637 258.516 0.119141 262.099 0.119141H311.726C318.245 0.119141 322.591 6.79204 320.007 12.704L176.588 340.495C175.178 343.773 171.889 345.88 168.307 345.88H157.031C153.448 345.88 150.277 343.773 148.808 340.554L0.808551 12.821C-1.89304 6.85055 2.51172 0.119141 9.03077 0.119141H59.0101C62.5926 0.119141 65.8228 2.22636 67.2911 5.50427Z" fill="#0D5A67"/><path d="M449.203 9.12949V332.53C449.203 337.506 445.151 341.545 440.159 341.545H392.059C387.067 341.545 383.014 337.506 383.014 332.53V9.12949C383.014 4.15409 387.067 0.115234 392.059 0.115234H440.159C445.151 0.115234 449.203 4.15409 449.203 9.12949Z" fill="#0D5A67"/><path d="M589.735 3.27794L774.617 219.737C780.079 226.117 790.533 222.254 790.533 213.884V9.07281C790.533 4.09741 794.585 0.0585466 799.577 0.0585466H846.209C851.201 0.0585466 855.254 4.09741 855.254 9.07281V332.474C855.254 337.449 851.201 341.488 846.209 341.488H802.573C799.93 341.488 797.404 340.317 795.643 338.269L609.527 118.122C604.124 111.683 593.552 115.546 593.552 123.917V332.415C593.552 337.391 589.5 341.43 584.508 341.43H537.876C532.884 341.43 528.832 337.391 528.832 332.415V9.01426C528.832 4.03886 532.884 0 537.876 0H582.805C585.447 0 587.973 1.17069 589.676 3.16085L589.735 3.27794Z" fill="#0D5A67"/><path d="M990.851 3.80473L1063.74 104.191C1067.32 109.166 1074.72 109.166 1078.36 104.191L1152.18 3.74618C1153.89 1.40482 1156.59 0.0585466 1159.47 0.0585466H1215.55C1223.01 0.0585466 1227.24 8.54599 1222.78 14.4579L1105.96 169.925C1104.79 171.505 1104.14 173.378 1104.14 175.31V332.415C1104.14 337.391 1100.09 341.43 1095.1 341.43H1047C1042.01 341.43 1037.95 337.391 1037.95 332.415V174.841C1037.95 172.91 1037.31 170.978 1036.13 169.398L918.672 14.4579C914.15 8.54599 918.437 0 925.896 0H983.569C986.447 0 989.207 1.40482 990.91 3.74618L990.851 3.80473Z" fill="#0D5A67"/><path d="M1353.74 9.12949V280.962C1353.74 285.937 1357.79 289.976 1362.78 289.976H1510.96C1515.95 289.976 1520 294.015 1520 298.99V332.53C1520 337.506 1515.95 341.545 1510.96 341.545H1296.59C1291.6 341.545 1287.55 337.506 1287.55 332.53V9.12949C1287.55 4.15409 1291.6 0.115234 1296.59 0.115234H1344.69C1349.68 0.115234 1353.74 4.15409 1353.74 9.12949Z" fill="#0D5A67"/></svg></div>
+  <h1 class="hero-title">Vinyl AI — Master Business Plan</h1>
+  <p class="hero-sub">Building, coaching, and installing AI systems for small business across the Ashland 60-mile region.</p>
+  <div class="hero-meta">Internal &middot; Draft v1 &middot; June 2026 &middot; Owner: Josh Agee</div>
+</div>
+
+<div class="tabbar">
+  <div class="tabbar-inner" id="tabbar">
+    <button class="tab active" data-tab="overview">Overview</button>
+    <button class="tab" data-tab="market">Market</button>
+    <button class="tab" data-tab="customer">Customer (ICP)</button>
+    <button class="tab" data-tab="offer">Offer &amp; Hook</button>
+    <button class="tab" data-tab="pricing">Pricing</button>
+    <button class="tab" data-tab="swot">SWOT</button>
+    <button class="tab" data-tab="marketing">Marketing</button>
+    <button class="tab" data-tab="ops">Delivery &amp; Team</button>
+    <button class="tab" data-tab="financials">Financials</button>
+    <button class="tab" data-tab="plan">Roadmap &amp; Inputs</button>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- OVERVIEW -->
+  <section class="panel active" id="tab-overview">
+    <div class="callout warn">
+      <span class="lab">Read this first</span>
+      Two foundational pieces — the <strong>exact product definition</strong> and the <strong>core hook</strong> — are being locked in the Wednesday strategy session, so they're marked <span class="tag prop">PROPOSED</span>. All financial figures are editable assumptions; anything needing your real number is shaded <span class="needs-input">like this</span> and gathered under the <strong>Roadmap &amp; Inputs</strong> tab.
+    </div>
+    <span class="section-label top">01 — Executive Summary</span>
+    <h2 class="first">The opportunity, in one breath</h2>
+    <p>Small businesses know AI matters but have no idea how to use it past ChatGPT. Vinyl has spent years building real AI <em>systems</em> — brains, teammates, automations — for its own agency and clients. We're packaging that into a product: we help small businesses install AI that does real work, guided by people who've already done it.</p>
+    <p>Delivery is our strength. The gap is <strong>commercial</strong> — sharpening what we sell and how we say it, then putting it in front of enough of the right people. The market is large and underserved: ~31,800 employer businesses sit within the 60-mile catchment, and almost none have adopted AI meaningfully.</p>
+    <div class="grid3">
+      <div class="card"><h3 style="margin-top:0">What we sell</h3><p style="margin:0">One product, four service types — Training, Coaching, Building, Consulting — customized per client via reusable AI teammates and systems.</p></div>
+      <div class="card"><h3 style="margin-top:0">Who it's for</h3><p style="margin:0">Owner-led for-profit businesses, ~5–50 people, within 60 miles of Ashland.</p></div>
+      <div class="card"><h3 style="margin-top:0">Why us</h3><p style="margin:0">Built for real on real engagements — agency-grade quality, not AI slop, with local trust.</p></div>
+    </div>
+    <span class="section-label">02 — The Opportunity</span>
+    <h2>The late-90s "what's a website?" moment for AI services</h2>
+    <p>Thirty years ago nobody knew how to scope, price, or buy a website. Today every business has one. AI services are at that same starting line — businesses sense they should act, but the vocabulary, tools, and "how" are a fog, and few agencies have packaged a real answer. Whoever defines the playbook first takes the category.</p>
+    <table>
+      <tr><th>Signal</th><th>Reality (June 2026)</th><th>Implication</th></tr>
+      <tr><td>ChatGPT's dominance</td><td>~87% of AI traffic a year ago → ~55% now</td><td>The "ChatGPT = AI" model is breaking open</td></tr>
+      <tr><td>Anthropic / Claude</td><td>~8–10% of consumers, but ~70% of new enterprise deals</td><td>Claude is the serious business choice — our stack</td></tr>
+      <tr><td>AI going ambient</td><td>Screenless devices (OpenAI + Jony Ive's "io") ~2 yrs out</td><td>Build systems now to ride the wave</td></tr>
+    </table>
+    <p class="note">Figures spot-checked June 2026; confirm before any public use.</p>
+  </section>
+
+  <!-- MARKET -->
+  <section class="panel" id="tab-market">
+    <span class="section-label top">03 — The Market</span>
+    <h2 class="first">Small Ashland, big 60-mile radius</h2>
+    <p>Ashland itself is small (~18,900), but the radius pulls in Mansfield, Wooster, and the <strong>Akron and Canton metros</strong> — an estimated 2.5–3 million people and a deep, manufacturing-heavy small-business base.</p>
+    <table>
+      <tr><th>Market</th><th>Drive</th><th>Population</th><th>Median HH income</th></tr>
+      <tr><td>Ashland (city)</td><td class="num">—</td><td class="num">18,911</td><td class="num">$60,029</td></tr>
+      <tr><td>Mansfield / Richland Co.</td><td class="num">14 mi</td><td class="num">124,853</td><td class="num">$59,509</td></tr>
+      <tr><td>Wooster / Wayne Co.</td><td class="num">22 mi</td><td class="num">116,632</td><td class="num">$73,574</td></tr>
+      <tr><td>Akron metro</td><td class="num">~50 mi</td><td class="num">702,200</td><td class="num">—</td></tr>
+      <tr><td>Canton–Massillon metro</td><td class="num">~55 mi</td><td class="num">400,551</td><td class="num">—</td></tr>
+    </table>
+    <span class="section-label">04 — Business Base <span class="tag prop">Census CBP / Nonemployer, 2023</span></span>
+    <h2>How many businesses are actually here</h2>
+    <p><strong>Employer establishments</strong> — businesses with paid employees — are the truest proxy for our buyer. Across the six core catchment counties:</p>
+    <div class="tiles">
+      <div class="tile"><div class="v">~31,800</div><div class="k">Employer establishments</div><div class="s">6 core counties</div></div>
+      <div class="tile"><div class="v">~109,900</div><div class="k">Nonemployer (solo)</div><div class="s">no payroll</div></div>
+      <div class="tile"><div class="v">~142,000</div><div class="k">Total businesses</div><div class="s">employer + solo</div></div>
+      <div class="tile"><div class="v">~89%</div><div class="k">Have &lt;20 employees</div><div class="s">U.S. benchmark</div></div>
+    </div>
+    <table>
+      <tr><th>County (anchor)</th><th>Employer establishments</th><th>Nonemployer</th></tr>
+      <tr><td>Ashland</td><td class="num">1,021</td><td class="num">3,878</td></tr>
+      <tr><td>Richland (Mansfield)</td><td class="num">2,616</td><td class="num">7,835</td></tr>
+      <tr><td>Wayne (Wooster)</td><td class="num">2,583</td><td class="num">10,394</td></tr>
+      <tr><td>Summit (Akron)</td><td class="num">13,309</td><td class="num">43,820</td></tr>
+      <tr><td>Stark (Canton)</td><td class="num">8,181</td><td class="num">28,377</td></tr>
+      <tr><td>Medina</td><td class="num">4,127</td><td class="num">15,596</td></tr>
+      <tr style="font-weight:500;background:var(--row)"><td>Core six-county total</td><td class="num">~31,800</td><td class="num">~109,900</td></tr>
+    </table>
+    <p class="note">A conservative floor — partial-radius counties (Lorain, Knox, Holmes, Huron, southern Cuyahoga) push the true 60-mile employer base past ~35,000. The economy is manufacturing-led (85+ manufacturers in Ashland County; anchors include Charles River Labs, Pentair, Step2), with health care and retail next. The <strong>back office</strong> looks the same across all of them — exactly where our reusable teammates apply.</p>
+    <div class="callout"><span class="lab">Bottom line</span>Market size is not the constraint — delivery capacity and reach are. A fraction of 1% of ~31,800 businesses is a multi-year pipeline.</div>
+    <p class="note">Sources: U.S. Census QuickFacts (County Business Patterns &amp; Nonemployer Statistics, 2023) for <a href="https://www.census.gov/quickfacts/fact/table/ashlandcountyohio/BZA010223">Ashland</a>, <a href="https://www.census.gov/quickfacts/fact/table/richlandcountyohio/BZA010223">Richland</a>, <a href="https://www.census.gov/quickfacts/fact/table/waynecountyohio/BZA010223">Wayne</a>, <a href="https://www.census.gov/quickfacts/fact/table/summitcountyohio/BZA010223">Summit</a>, <a href="https://www.census.gov/quickfacts/fact/table/starkcountyohio/BZA010223">Stark</a>, <a href="https://www.census.gov/quickfacts/fact/table/medinacountyohio/BZA010223">Medina</a>; metros — <a href="https://www.macrotrends.net/global-metrics/cities/22905/akron/population">Akron</a>, <a href="https://www.citypopulation.de/en/usa/metro/15940__canton_massillon/">Canton</a>.</p>
+  </section>
+
+  <!-- CUSTOMER / ICP -->
+  <section class="panel" id="tab-customer">
+    <span class="section-label top">05 — Ideal Customer Profile</span>
+    <h2 class="first">Who we're built to win</h2>
+    <p>One primary ICP drives the offer and the messaging; a secondary profile is the path into larger orgs. Everything else is out of scope on purpose.</p>
+    <div class="card">
+      <h3 style="margin-top:0">Primary ICP — "The Owner-Operator"</h3>
+      <div class="grid2">
+        <div>
+          <p><strong>Firmographics</strong></p>
+          <ul>
+            <li>For-profit, <strong>5–50 employees</strong> (sweet spot 10–40)</li>
+            <li>Revenue ~$1M–$15M, established 5+ years</li>
+            <li>Within 60 miles of Ashland</li>
+            <li>Manufacturing, healthcare, professional services, trades, distribution, ag-adjacent — anything back-office-heavy</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>The buyer</strong></p>
+          <ul>
+            <li>Owner / founder / president, 40s–60s</li>
+            <li>Decision-maker <em>with</em> budget; can say yes fast</li>
+            <li>Not technical; wears every hat</li>
+            <li>Senses AI matters, doesn't know how to use it</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:14px"><strong>Buying triggers:</strong> can't find or afford the next hire; drowning in repetitive admin/marketing/sales work; "no one but me can do this"; tried ChatGPT and was underwhelmed; worried competitors are pulling ahead. <strong>What they value:</strong> time back, done-with-you delivery, plain language, local trust, and proof it works.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Secondary ICP — "The Department Champion"</h3>
+      <p style="margin:0">An operations or marketing leader / VP inside a 50–250-person org who's excited about AI but lacks solo buying power. They can't close on the day — so the play is the AI Blueprint: 1:1 time that gets the decision-makers into the room. Higher ceiling, longer cycle.</p>
+    </div>
+    <div class="grid2">
+      <div class="card" style="border-top:4px solid var(--maroon)">
+        <h3 style="margin-top:0">Anti-ICP (disqualify fast)</h3>
+        <ul style="margin-bottom:0">
+          <li>AI-native operators who already build systems</li>
+          <li>Large orgs with an AI council / dev team (theory-stuck)</li>
+          <li>Pre-revenue startups with no budget</li>
+          <li>Shop-floor / Industry-4.0 automation seekers</li>
+          <li>Price-shoppers with no urgency</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:4px solid var(--teal-deep)">
+        <h3 style="margin-top:0">Fit scorecard (quick qualify)</h3>
+        <ul style="margin-bottom:0">
+          <li>For-profit, 5–50 employees?</li>
+          <li>Owner in the room with budget?</li>
+          <li>Felt pain around hiring / capacity?</li>
+          <li>Back-office work to automate?</li>
+          <li>Within ~60 miles (or remote-willing)?</li>
+        </ul>
+        <p class="note" style="margin:8px 0 0">4–5 yes = pursue now. 2–3 = nurture. 0–1 = pass.</p>
+      </div>
+    </div>
+    <div class="callout"><span class="lab">Where to find them</span>The existing 10-year client/contact list (split for-profit), chambers of commerce (Richland already engaged), BNI &amp; industry associations, Ashland University &amp; economic-dev groups, LinkedIn, and referrals from early wins.</div>
+  </section>
+
+  <!-- OFFER & HOOK -->
+  <section class="panel" id="tab-offer">
+    <span class="section-label top">06 — The Product</span>
+    <h2 class="first">One product, four service types, customized per client</h2>
+    <p>The durable unit is the <strong>AI teammate + system</strong>, retrofit to any business like tailored clothing. On top of it sit four ways to engage <span class="tag prop">structure finalized Wednesday</span>:</p>
+    <table>
+      <tr><th>Service type</th><th>What it is</th><th>Example</th></tr>
+      <tr><td><strong>Training</strong></td><td>Team education — methodology, the intelligence layer, AI basics</td><td>Chamber team workshop</td></tr>
+      <tr><td><strong>Coaching</strong></td><td>Directed lessons toward a goal; we teach them to do it</td><td>Weekly AI Champion sessions</td></tr>
+      <tr><td><strong>Building</strong></td><td>Done-for-you — brain, teammates, systems installed</td><td>Blueprint → installed teammates</td></tr>
+      <tr><td><strong>Consulting (retainer)</strong></td><td>Fractional Chief AI Officer / thought partner, billed in increments</td><td>On-call strategic guidance</td></tr>
+    </table>
+    <p>Most likely sold as a <strong>bundle</strong> with seminars and intensives as fast-action bonuses, scaled by company size.</p>
+    <div class="callout"><span class="lab">The honest edge</span>The blueprint and demos we show are deliberately ~90–95% — not perfect. The gap between "AI slop" and agency-grade output <em>is</em> the value of working with us. We show what's possible; the polish is the engagement.</div>
+    <span class="section-label">07 — Positioning &amp; Hook</span>
+    <h2>One sharp message</h2>
+    <p>"AI for your business" is too broad. The leading candidate, pending Wednesday's bullseye exercise, is <strong>"install an AI employee instead of hiring"</strong> <span class="tag prop">PROPOSED</span> — concrete, maps to a salary budget, and sidesteps the vocabulary problem. Supporting rings: "work <em>on</em>, not <em>in</em>, the business," "you're using a rocket ship to go to the grocery store," "your competitors are figuring this out right now," and "AI without the slop."</p>
+  </section>
+
+  <!-- PRICING -->
+  <section class="panel" id="tab-pricing">
+    <span class="section-label top">08 — Pricing Model</span>
+    <h2 class="first">How we price <span class="tag prop">PROPOSED — pending Wednesday</span></h2>
+    <p>Pricing is <strong>value-based and anchored to the cost of a hire</strong>: a single mid-level employee runs $50–70K+ a year, so a system that does that work for a fraction is an easy yes. Free and low-cost entry offers feed a recurring <strong>core engagement</strong>, and a fast-action bonus stack rewards committing on the day. Every number below is a draft to lock with Scott.</p>
+
+    <h3>Entry &amp; one-time offers</h3>
+    <table>
+      <tr><th>Offer</th><th>Price (proposed)</th><th>Format</th></tr>
+      <tr><td>Free assets — Slop Filter, Morning Brief</td><td class="num">Free (for email)</td><td>Self-serve</td></tr>
+      <tr><td>AI Systems Seminar</td><td class="num">$79 first seat · $47 add'l</td><td>2-hr live</td></tr>
+      <tr><td>AI Blueprint</td><td class="num">Free for first cohort (anchor $497)</td><td>Two meetings</td></tr>
+      <tr><td>Intensive workshop</td><td class="num">$1,500 / person · $5,000 team day</td><td>1–2 day on-site</td></tr>
+    </table>
+
+    <h3>Core engagement — the recurring product</h3>
+    <p>One product, three depths, scaled by company size. Each bundles the four service types (Training · Coaching · Building · Consulting) at increasing intensity.</p>
+    <table>
+      <tr><th>Tier</th><th>Best for</th><th>Monthly</th><th>Term</th><th>What's included</th><th>~Value</th></tr>
+      <tr><td><strong>Launch</strong></td><td>5–15 employees</td><td class="num">$3,500</td><td>3 mo</td><td>AI brain + 1–2 teammates built, weekly coaching</td><td class="num">~$10.5K</td></tr>
+      <tr style="background:var(--row)"><td><strong>Scale</strong> <span class="tag">most popular</span></td><td>15–40</td><td class="num">$7,500</td><td>6 mo</td><td>Multi-department teammates + systems, coaching, monthly consulting</td><td class="num">~$45K</td></tr>
+      <tr><td><strong>Transform</strong></td><td>40+ / multi-dept</td><td class="num">$15,000</td><td>6 mo</td><td>Fractional Chief AI Officer, dept-by-dept rollout, change management</td><td class="num">~$90K</td></tr>
+    </table>
+    <p class="note">Add-on — <strong>Consulting retainer</strong> (fractional Chief AI Officer access): billed in 15-minute increments against a monthly cap. <span class="needs-input">rate $/hr — [INPUT]</span></p>
+
+    <h3>Fast-action bonus stack</h3>
+    <p>Included free when a client commits by the deadline — this is what drives the yes on the day:</p>
+    <ul>
+      <li>Team onboarding workshop (half-day)</li>
+      <li>+4 hours of coaching</li>
+      <li>1–2 extra AI teammates installed on day one</li>
+      <li>Priority build queue</li>
+    </ul>
+
+    <div class="grid2">
+      <div class="card"><h3 style="margin-top:0">Pricing principles</h3><ul style="margin-bottom:0">
+        <li>Anchor to the cost of a hire, not to hours</li>
+        <li>10–15% off for a yes on the day</li>
+        <li>Cohort scarcity — 4–5 clients at a time</li>
+        <li>Annual prepay option (one month free)</li>
+      </ul></div>
+      <div class="card"><h3 style="margin-top:0">How it ties to the model</h3><p style="margin:0">The Financials tab uses a single blended <em>engagement value</em> ($/mo). With this mix, a blended ~$5K/mo is a reasonable Year-1 starting assumption; it rises as Scale and Transform deals land.</p></div>
+    </div>
+    <div class="callout warn"><span class="lab">Draft figures</span>Proposed numbers to decide Wednesday — not a finalized rate card. Confirm with Scott before quoting any client.</div>
+  </section>
+
+  <!-- SWOT -->
+  <section class="panel" id="tab-swot">
+    <span class="section-label top">09 — SWOT</span>
+    <h2 class="first">Vinyl's AI offering in this market</h2>
+    <div class="swot">
+      <div class="q s"><h3><span class="badge">S</span>Strengths</h3><ul>
+        <li>A working system, not theory — plugin, teammates, pipeline already run</li>
+        <li>10 years of local relationships + a warm contact list</li>
+        <li>Agency-grade quality (design + strategy + ops)</li>
+        <li>First mover locally on an AI blueprint→engagement motion</li>
+        <li>Central, convenient location for in-person events</li>
+      </ul></div>
+      <div class="q w"><h3><span class="badge">W</span>Weaknesses</h3><ul>
+        <li>Product &amp; hook not yet sharp (fixing Wednesday)</li>
+        <li>Selling the new offer is the weak muscle, not delivering it</li>
+        <li>Delivery capacity is a small-team constraint</li>
+        <li>Unproven pricing &amp; packaging</li>
+        <li>Not yet fully AI-first internally — a credibility gap</li>
+      </ul></div>
+      <div class="q o"><h3><span class="badge">O</span>Opportunities</h3><ul>
+        <li>~31,800 employer businesses, low AI adoption</li>
+        <li>Manufacturing-heavy → common back-office use cases</li>
+        <li>"Replace a hire" lands in a workforce-strained region</li>
+        <li>Warm channels: chambers, university, economic-dev</li>
+        <li>Akron + Canton expand TAM; verticalization is open</li>
+        <li>Undefined category — first to define it wins</li>
+      </ul></div>
+      <div class="q t"><h3><span class="badge">T</span>Threats</h3><ul>
+        <li>Fast-moving tooling — workflows can break</li>
+        <li>"We already have Copilot" — platforms as "good enough"</li>
+        <li>National AI agencies entering the space</li>
+        <li>AI skepticism from prior bad experiences</li>
+        <li>SMB budget sensitivity on a $5K/mo decision</li>
+        <li>Slow-adopter / older-business segments</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- MARKETING -->
+  <section class="panel" id="tab-marketing">
+    <span class="section-label top">10 — Marketing Plan</span>
+    <h2 class="first">How we fill the funnel</h2>
+    <p>Objective: a predictable flow of qualified owner-operators into seminars and blueprints, converting to engagements. Method: Jeff Walker's <em>Launch</em> (sequenced pre-launch → launch) plus Jason Fladlien's <em>One to Many</em> for the webinar. Targets are placeholders to set with Scott.</p>
+    <h3>The funnel &amp; channels</h3>
+    <table>
+      <tr><th>Stage</th><th>Goal</th><th>Primary channels</th></tr>
+      <tr><td><strong>Attract</strong></td><td>Reach owner-operators, build authority</td><td>LinkedIn + content engine, local PR, chambers, referrals</td></tr>
+      <tr><td><strong>Capture</strong></td><td>Trade value for an email</td><td>Free assets (Slop Filter, Morning Brief), landing pages</td></tr>
+      <tr><td><strong>Nurture</strong></td><td>Warm toward a seminar seat</td><td>Email sequence, "give-don't-take" outreach, demo clips</td></tr>
+      <tr><td><strong>Convert (1→many)</strong></td><td>Seminar → pitch</td><td>2-hr seminar / webinar, paid ads to fill seats</td></tr>
+      <tr><td><strong>Convert (1→1)</strong></td><td>Blueprint → engagement</td><td>Two-meeting AI Blueprint, on-the-day offer</td></tr>
+      <tr><td><strong>Expand / refer</strong></td><td>Upsell + word of mouth</td><td>Client wins, case studies, referral asks</td></tr>
+    </table>
+    <h3>The pre-launch (give, don't take)</h3>
+    <p>Before any ad runs, split the 10-year list (IF takes nonprofit, Vinyl takes for-profit) and send a short feedback-asking email — "we've gone deep on AI; what are <em>you</em> trying to figure out?" Then follow up with "we're building exactly that — interested?" This starts a conversation and seeds demand instead of leading with a pitch.</p>
+    <h3>Channel plan</h3>
+    <table>
+      <tr><th>Channel</th><th>Role</th><th>First move</th></tr>
+      <tr><td>Email (owned list)</td><td>Cheapest, warmest demand</td><td>Pre-launch feedback campaign to for-profit segment</td></tr>
+      <tr><td>Content engine (LinkedIn / blog / video)</td><td>Authority beyond the local radius (Akron/Columbus)</td><td>Weekly plain-language "what AI can actually do" + demo clips</td></tr>
+      <tr><td>Partnerships (chambers, university, econ-dev)</td><td>Reach hundreds of owners at once</td><td>Offer the team workshop as a chamber member benefit</td></tr>
+      <tr><td>Paid (Meta / Google, local)</td><td>Fill seminar seats (loss-leader)</td><td>~1 week of geo-targeted ads per seminar + retargeting</td></tr>
+      <tr><td>Events (seminars, intensives)</td><td>The conversion engine</td><td>First seminar in-house, ~30 seats</td></tr>
+      <tr><td>Referrals / word of mouth</td><td>Lowest CAC, compounds</td><td>Structured referral ask after first wins</td></tr>
+    </table>
+    <h3>90-day campaign arc <span class="tag">NEEDS DATES</span></h3>
+    <table>
+      <tr><th>Weeks</th><th>Focus</th></tr>
+      <tr><td>1–2</td><td>Lock hook + product (Wednesday); build free assets + landing pages; open Slack rally</td></tr>
+      <tr><td>2–4</td><td>Pre-launch "give-don't-take" emails; start content engine; AI Blueprint live</td></tr>
+      <tr><td>4–6</td><td>Announce first seminar; paid ads + partner promotion; nurture sequence runs</td></tr>
+      <tr><td>6–8</td><td>Run seminar → pitch; book blueprints; capture case study from first engagement</td></tr>
+      <tr><td>8–12</td><td>Second seminar; referral push; iterate hook on real response</td></tr>
+    </table>
+    <div class="callout input"><span class="lab">Marketing inputs to set</span>
+      <ul style="margin-bottom:0">
+        <li><strong>Budget</strong> — monthly marketing spend (the model assumes <span class="needs-input">$3,000/mo</span>).</li>
+        <li><strong>Targets</strong> — seminar seats/event, blueprints/quarter, engagements/quarter.</li>
+        <li><strong>Owners</strong> — who runs content, ads, partnerships, email.</li>
+        <li><strong>The hook</strong> — locks the messaging all channels iterate on.</li>
+      </ul>
+    </div>
+    <h3>Marketing KPIs</h3>
+    <p>Email capture rate, seminar registrations &amp; show rate, seminar→blueprint %, blueprint→engagement %, CAC by channel, and content reach/engagement. Review weekly against the funnel; double down on what the market rewards.</p>
+  </section>
+
+  <!-- OPS: DELIVERY & TEAM -->
+  <section class="panel" id="tab-ops">
+    <span class="section-label top">11 — How We Deliver</span>
+    <h2 class="first">A system that runs the engagement</h2>
+    <p>The Blueprint is a working Claude plugin: a prospect books → the strategist gets a Slack mention → a Notion pipeline + intake is created → <code>/discovery prep</code> builds the brief and brand demo → <code>/blueprint strategy</code> drafts the blueprint → the strategist reviews → Claude Design produces the deck. Delivery scales because teammates and systems are <strong>built once and customized</strong>.</p>
+    <ul>
+      <li><strong>Two-meeting Blueprint:</strong> Meeting 1 is discovery; Meeting 2 is the reveal + live demos + plan + close.</li>
+      <li><strong>Human-in-the-loop:</strong> AI does the heavy lifting; humans review and finalize. The standard: you can't tell it's AI.</li>
+      <li><strong>Eat our own dog food:</strong> make Vinyl AI-first internally first (Colleen builds per-teammate "builders," ~2×1hr/week for a month).</li>
+    </ul>
+    <div class="callout input"><span class="lab">Input needed</span>Delivery capacity — how many active engagements can the team support at quality? This caps the growth curve; it sets the <span class="needs-input">delivery cost</span> and <span class="needs-input">new clients/mo</span> in the model.</div>
+    <span class="section-label">12 — Team &amp; Roles</span>
+    <h2>Who does what</h2>
+    <table>
+      <tr><th>Person</th><th>Role</th></tr>
+      <tr><td>Scott</td><td>Sponsor, strategy, sales/pitch lead</td></tr>
+      <tr><td>Josh</td><td>DRI for the launch; strategy + storytelling</td></tr>
+      <tr><td>Colleen</td><td>System/plugin architect; builds teammates, systems, blueprint pipeline</td></tr>
+      <tr><td>Amy</td><td>Operations, scheduling, production</td></tr>
+      <tr><td>John / team</td><td>Vinyl design system (so output looks designed, not AI-made)</td></tr>
+    </table>
+    <div class="callout input"><span class="lab">Input needed</span>Confirm roles and time allocation to this initiative — it drives the <span class="needs-input">overhead</span> and <span class="needs-input">delivery cost</span> lines. <span class="tag">NEEDS INPUT</span></div>
+  </section>
+
+  <!-- FINANCIALS -->
+  <section class="panel" id="tab-financials">
+    <span class="section-label top">13 — Financial Model</span>
+    <h2 class="first">An interactive Year-1 model</h2>
+    <p>Everything below is editable. Change any shaded assumption and the model recalculates; pick a scenario to scale volume. <strong>All defaults are placeholders.</strong></p>
+    <div class="scenarios" id="scenarios">
+      <button class="scbtn" data-mult="0.6" onclick="setScenario(this)">Conservative</button>
+      <button class="scbtn active" data-mult="1" onclick="setScenario(this)">Base</button>
+      <button class="scbtn" data-mult="1.6" onclick="setScenario(this)">Aggressive</button>
+      <span class="note" style="align-self:center">Scenario scales seminar attendance &amp; direct deals; prices/costs fixed.</span>
+    </div>
+    <div class="model">
+      <h3>Assumptions <span class="tag">NEEDS INPUT — edit any field</span></h3>
+      <div class="inputs" id="inputs2">
+        <div class="inp"><label>Seminars per month</label><input id="mSeminars" type="number" value="1"><span class="u">#/mo</span></div>
+        <div class="inp"><label>Attendees per seminar</label><input id="mAttendees" type="number" value="25"><span class="u">ppl</span></div>
+        <div class="inp"><label>Seminar seat price</label><input id="pSeat" type="number" value="79"><span class="u">$</span></div>
+        <div class="inp"><label>Cost per seminar (venue+ads)</label><input id="cSeminar" type="number" value="1200"><span class="u">$</span></div>
+        <div class="inp"><label>Attendees &rarr; Blueprint</label><input id="convSB" type="number" value="30"><span class="u">%</span></div>
+        <div class="inp"><label>Blueprint price</label><input id="pBlueprint" type="number" value="0"><span class="u">$</span></div>
+        <div class="inp"><label>Blueprint &rarr; Engagement</label><input id="convBE" type="number" value="25"><span class="u">%</span></div>
+        <div class="inp"><label>Direct / referral deals</label><input id="mDirect" type="number" value="1"><span class="u">#/mo</span></div>
+        <div class="inp"><label>Engagement value</label><input id="pEng" type="number" value="5000"><span class="u">$/mo</span></div>
+        <div class="inp"><label>Avg engagement length</label><input id="engLen" type="number" value="4"><span class="u">mo</span></div>
+        <div class="inp"><label>Delivery cost / active client</label><input id="cDeliver" type="number" value="1500"><span class="u">$/mo</span></div>
+        <div class="inp"><label>Workshop / intensive revenue</label><input id="mWorkshop" type="number" value="2000"><span class="u">$/mo</span></div>
+        <div class="inp"><label>Marketing spend</label><input id="mMarketing" type="number" value="3000"><span class="u">$/mo</span></div>
+        <div class="inp"><label>Fixed overhead (allocated)</label><input id="mOverhead" type="number" value="6000"><span class="u">$/mo</span></div>
+      </div>
+      <div class="tiles" id="tiles"></div>
+      <h3>12-month revenue build</h3>
+      <div style="overflow-x:auto">
+        <table class="modeltable" id="buildTable">
+          <thead><tr><th>Month</th><th>New deals</th><th>Active</th><th>Recurring</th><th>One-time</th><th>Revenue</th><th>Costs</th><th>Contribution</th></tr></thead>
+          <tbody></tbody><tfoot></tfoot>
+        </table>
+      </div>
+      <p class="note">"One-time" = seminar seats + blueprint fees + workshops that month. "Recurring" = active engagements &times; monthly value. Contribution = revenue − delivery − seminar − marketing − overhead. Constant monthly inflow (no ramp) — a deliberately simple base.</p>
+      <h3>Unit economics (per engagement)</h3>
+      <table id="unitTable"><tbody></tbody></table>
+    </div>
+    <div class="callout warn"><span class="lab">Not a forecast</span>A planning model to pressure-test assumptions, not a revenue promise. Pricing is <span class="tag prop">PROPOSED</span> until Scott signs off.</div>
+  </section>
+
+  <!-- PLAN: ROADMAP, RISKS, INPUTS, SOURCES -->
+  <section class="panel" id="tab-plan">
+    <span class="section-label top">14 — Roadmap</span>
+    <h2 class="first">From here to live</h2>
+    <table>
+      <tr><th>Phase</th><th>Window <span class="tag">NEEDS DATES</span></th><th>Milestone</th></tr>
+      <tr><td>0 — Lock</td><td>This week</td><td>Wednesday: decide product + hook. Open the Slack rally thread.</td></tr>
+      <tr><td>1 — Blueprint live</td><td>Weeks 1–2</td><td>Funnel page, two-meeting flow, booking.</td></tr>
+      <tr><td>2 — Free tier + pre-launch</td><td>Weeks 2–4</td><td>Free assets, capture, "give-don't-take" emails.</td></tr>
+      <tr><td>3 — Seminar / webinar</td><td>Weeks 4–6</td><td>First event; registration covers ad spend.</td></tr>
+      <tr><td>4 — Engagement productized</td><td>Parallel</td><td>Bundle + offer stack + pricing locked.</td></tr>
+      <tr><td>Internal</td><td>Ongoing</td><td>Vinyl AI-first onboarding (doubles as the client template).</td></tr>
+    </table>
+    <span class="section-label">15 — Risks &amp; Mitigations</span>
+    <h2>What could go wrong</h2>
+    <table>
+      <tr><th>Risk</th><th>Mitigation</th></tr>
+      <tr><td>Messaging stays fuzzy — nobody bites</td><td>Lock one hook Wednesday; iterate on real response</td></tr>
+      <tr><td>Delivery can't scale with sales</td><td>Cap concurrent engagements; reuse teammates/systems; build the recipe library</td></tr>
+      <tr><td>Local-only reach</td><td>Free thought-leadership tier builds authority beyond the radius</td></tr>
+      <tr><td>Output looks like AI slop</td><td>Vinyl design system + human-in-the-loop standard</td></tr>
+      <tr><td>Category matures, competitors copy</td><td>First-mover playbook + boutique, customized teammates</td></tr>
+      <tr><td>Fast-moving tooling breaks workflows</td><td>Plugin versioning + change catalog; weekly refinement</td></tr>
+    </table>
+    <span class="section-label">16 — Inputs We Need From You</span>
+    <h2>Fill these and the plan sharpens</h2>
+    <div class="callout input"><span class="lab">Strategic (Wednesday)</span><ul style="margin-bottom:0">
+      <li><strong>Product:</strong> bundle vs. ladder; confirm the four service types + size matrix.</li>
+      <li><strong>Hook:</strong> the one center message.</li>
+      <li><strong>Origin story</strong> — the "why now / why us" we all tell the same way.</li>
+    </ul></div>
+    <div class="callout input"><span class="lab">Pricing &amp; packaging</span><ul style="margin-bottom:0">
+      <li>Engagement monthly price by company size, and length.</li>
+      <li>Seminar seat + multi-seat pricing; Blueprint free or paid.</li>
+      <li>Workshop / intensive pricing; the fast-action bonus stack.</li>
+    </ul></div>
+    <div class="callout input"><span class="lab">Model &amp; marketing reality-checks</span><ul style="margin-bottom:0">
+      <li><strong>Delivery capacity</strong> + real delivery cost per active client.</li>
+      <li><strong>Conversion rates</strong> once we have a few real cycles.</li>
+      <li><strong>Marketing budget</strong>, overhead allocation, and channel owners.</li>
+      <li><strong>Targets</strong> (seats, blueprints, engagements) and <strong>launch/seminar dates.</strong></li>
+    </ul></div>
+    <p class="note">Drop numbers into the model, or tell me and I'll set them and re-version this page. Demographic/market sources are linked on the Market tab. Most figures are 2023–2024 estimates, spot-checked June 2026.</p>
+  </section>
+
+</div>
+
+<div class="footer-bar">
+  <div class="footer-inner">
+    <div class="footer-wordmark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1520 346" fill="none"><path d="M67.2911 5.50427L153.389 200.364C156.561 207.564 166.839 207.505 169.951 200.306L253.818 5.56281C255.227 2.22637 258.516 0.119141 262.099 0.119141H311.726C318.245 0.119141 322.591 6.79204 320.007 12.704L176.588 340.495C175.178 343.773 171.889 345.88 168.307 345.88H157.031C153.448 345.88 150.277 343.773 148.808 340.554L0.808551 12.821C-1.89304 6.85055 2.51172 0.119141 9.03077 0.119141H59.0101C62.5926 0.119141 65.8228 2.22636 67.2911 5.50427Z" fill="#ECE8E2"/><path d="M449.203 9.12949V332.53C449.203 337.506 445.151 341.545 440.159 341.545H392.059C387.067 341.545 383.014 337.506 383.014 332.53V9.12949C383.014 4.15409 387.067 0.115234 392.059 0.115234H440.159C445.151 0.115234 449.203 4.15409 449.203 9.12949Z" fill="#ECE8E2"/><path d="M589.735 3.27794L774.617 219.737C780.079 226.117 790.533 222.254 790.533 213.884V9.07281C790.533 4.09741 794.585 0.0585466 799.577 0.0585466H846.209C851.201 0.0585466 855.254 4.09741 855.254 9.07281V332.474C855.254 337.449 851.201 341.488 846.209 341.488H802.573C799.93 341.488 797.404 340.317 795.643 338.269L609.527 118.122C604.124 111.683 593.552 115.546 593.552 123.917V332.415C593.552 337.391 589.5 341.43 584.508 341.43H537.876C532.884 341.43 528.832 337.391 528.832 332.415V9.01426C528.832 4.03886 532.884 0 537.876 0H582.805C585.447 0 587.973 1.17069 589.676 3.16085L589.735 3.27794Z" fill="#ECE8E2"/><path d="M990.851 3.80473L1063.74 104.191C1067.32 109.166 1074.72 109.166 1078.36 104.191L1152.18 3.74618C1153.89 1.40482 1156.59 0.0585466 1159.47 0.0585466H1215.55C1223.01 0.0585466 1227.24 8.54599 1222.78 14.4579L1105.96 169.925C1104.79 171.505 1104.14 173.378 1104.14 175.31V332.415C1104.14 337.391 1100.09 341.43 1095.1 341.43H1047C1042.01 341.43 1037.95 337.391 1037.95 332.415V174.841C1037.95 172.91 1037.31 170.978 1036.13 169.398L918.672 14.4579C914.15 8.54599 918.437 0 925.896 0H983.569C986.447 0 989.207 1.40482 990.91 3.74618L990.851 3.80473Z" fill="#ECE8E2"/><path d="M1353.74 9.12949V280.962C1353.74 285.937 1357.79 289.976 1362.78 289.976H1510.96C1515.95 289.976 1520 294.015 1520 298.99V332.53C1520 337.506 1515.95 341.545 1510.96 341.545H1296.59C1291.6 341.545 1287.55 337.506 1287.55 332.53V9.12949C1287.55 4.15409 1291.6 0.115234 1296.59 0.115234H1344.69C1349.68 0.115234 1353.74 4.15409 1353.74 9.12949Z" fill="#ECE8E2"/></svg></div>
+    <div class="footer-meta">June 2026 · AI Business Development · Master Plan · Internal</div>
+  </div>
+</div>
+
+<script>
+/* ---- TABS ---- */
+document.getElementById('tabbar').addEventListener('click',function(e){
+  var btn=e.target.closest('.tab'); if(!btn) return;
+  var id=btn.getAttribute('data-tab');
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('active',t===btn);});
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('active',p.id==='tab-'+id);});
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+/* ---- FINANCIAL MODEL ---- */
+var scenarioMult=1;
+function n(id){return parseFloat(document.getElementById(id).value)||0;}
+function fmt(v){var neg=v<0;v=Math.round(Math.abs(v));var s=v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");return (neg?"-$":"$")+s;}
+function setScenario(btn){scenarioMult=parseFloat(btn.getAttribute('data-mult'));document.querySelectorAll('.scbtn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');recalc();}
+function recalc(){
+  var seminars=n('mSeminars'),attendees=n('mAttendees')*scenarioMult,pSeat=n('pSeat'),cSeminar=n('cSeminar');
+  var convSB=n('convSB')/100,pBlueprint=n('pBlueprint'),convBE=n('convBE')/100;
+  var direct=n('mDirect')*scenarioMult,pEng=n('pEng'),engLen=Math.max(1,Math.round(n('engLen')));
+  var cDeliver=n('cDeliver'),workshop=n('mWorkshop'),marketing=n('mMarketing'),overhead=n('mOverhead');
+  var blueprintsMo=seminars*attendees*convSB;
+  var newDeals=blueprintsMo*convBE+direct;
+  var oneTime=seminars*attendees*pSeat+blueprintsMo*pBlueprint+workshop;
+  var tb=document.querySelector('#buildTable tbody');tb.innerHTML='';
+  var totRev=0,totContrib=0,totCost=0,endMRR=0,endActive=0;
+  for(var m=1;m<=12;m++){
+    var active=newDeals*Math.min(m,engLen);var mrr=active*pEng;var rev=mrr+oneTime;
+    var cost=active*cDeliver+seminars*cSeminar+marketing+overhead;var contrib=rev-cost;
+    totRev+=rev;totContrib+=contrib;totCost+=cost;if(m===12){endMRR=mrr;endActive=active;}
+    tb.insertAdjacentHTML('beforeend','<tr><td>'+m+'</td><td>'+newDeals.toFixed(1)+'</td><td>'+active.toFixed(1)+'</td><td>'+fmt(mrr)+'</td><td>'+fmt(oneTime)+'</td><td>'+fmt(rev)+'</td><td>'+fmt(cost)+'</td><td style="color:'+(contrib<0?'#803038':'#0D5A67')+'">'+fmt(contrib)+'</td></tr>');
+  }
+  document.querySelector('#buildTable tfoot').innerHTML='<tr style="font-weight:500;background:#f4f1ec"><td>Year 1</td><td>—</td><td>'+endActive.toFixed(1)+'</td><td>'+fmt(endMRR)+'</td><td>—</td><td>'+fmt(totRev)+'</td><td>'+fmt(totCost)+'</td><td style="color:'+(totContrib<0?'#803038':'#0D5A67')+'">'+fmt(totContrib)+'</td></tr>';
+  var engValue=pEng*engLen,engCost=cDeliver*engLen,engGM=engValue>0?(engValue-engCost)/engValue*100:0;
+  var cac=newDeals>0?marketing/newDeals:0,payback=(pEng-cDeliver)>0?cac/(pEng-cDeliver):0;
+  var tiles=[[newDeals.toFixed(1),'New deals / mo'],[fmt(endMRR),'Ending MRR (mo 12)'],[fmt(totRev),'Year-1 revenue'],[fmt(totContrib),'Year-1 contribution']];
+  document.getElementById('tiles').innerHTML=tiles.map(function(t){return '<div class="tile"><div class="v">'+t[0]+'</div><div class="k">'+t[1]+'</div></div>';}).join('');
+  document.querySelector('#unitTable tbody').innerHTML=
+    '<tr><td>Engagement value ('+engLen+' mo)</td><td style="text-align:right">'+fmt(engValue)+'</td></tr>'+
+    '<tr><td>Delivery cost over engagement</td><td style="text-align:right">'+fmt(engCost)+'</td></tr>'+
+    '<tr><td>Gross margin</td><td style="text-align:right">'+engGM.toFixed(0)+'%</td></tr>'+
+    '<tr><td>CAC (marketing &divide; new deals)</td><td style="text-align:right">'+fmt(cac)+'</td></tr>'+
+    '<tr><td>Payback period</td><td style="text-align:right">'+payback.toFixed(1)+' mo</td></tr>';
+}
+document.querySelectorAll('#inputs2 input').forEach(function(i){i.addEventListener('input',recalc);});
+recalc();
+</script>
+</body>
+</html>
