@@ -73,6 +73,7 @@ td.num{text-align:right;font-family:'JetBrains Mono';font-size:14px;}
 .inp .u{font-family:'JetBrains Mono';font-size:11px;color:var(--teal);width:34px;text-align:left;}
 .modeltable{font-size:13px;}.modeltable th,.modeltable td{padding:7px 8px;text-align:right;}
 .modeltable th:first-child,.modeltable td:first-child{text-align:left;}
+.modeltable input{width:88px;font-family:'JetBrains Mono';font-size:13px;text-align:right;padding:4px 6px;border:1px solid var(--input-border);background:var(--input);border-radius:5px;color:var(--teal-deep);}
 .note{font-size:13px;opacity:.75;font-style:italic;}
 .footer-bar{background:var(--teal);padding:36px 40px;margin-top:60px;position:relative;z-index:1;}
 .footer-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
@@ -289,7 +290,7 @@ td.num{text-align:right;font-family:'JetBrains Mono';font-size:14px;}
         <li>Cohort scarcity — 4–5 clients at a time</li>
         <li>Annual prepay option (one month free)</li>
       </ul></div>
-      <div class="card"><h3 style="margin-top:0">How it ties to the model</h3><p style="margin:0">The Financials tab uses a single blended <em>engagement value</em> ($/mo). With this mix, a blended ~$5K/mo is a reasonable Year-1 starting assumption; it rises as Scale and Transform deals land.</p></div>
+      <div class="card"><h3 style="margin-top:0">How it ties to the model</h3><p style="margin:0">The Financials tab takes these three tier prices and a deal mix directly — edit any of them there to watch Year-1 revenue and contribution move in real time.</p></div>
     </div>
     <div class="callout warn"><span class="lab">Draft figures</span>Proposed numbers to decide Wednesday — not a finalized rate card. Confirm with Scott before quoting any client.</div>
   </section>
@@ -416,7 +417,19 @@ td.num{text-align:right;font-family:'JetBrains Mono';font-size:14px;}
       <span class="note" style="align-self:center">Scenario scales seminar attendance &amp; direct deals; prices/costs fixed.</span>
     </div>
     <div class="model">
-      <h3>Assumptions <span class="tag">NEEDS INPUT — edit any field</span></h3>
+      <h3>Pricing &amp; deal mix <span class="tag">edit to see the effect</span></h3>
+      <div style="overflow-x:auto">
+        <table class="modeltable" id="pricingInputs">
+          <thead><tr><th>Core tier</th><th>$/mo</th><th>Term (mo)</th><th>Deal mix %</th></tr></thead>
+          <tbody>
+            <tr><td>Launch</td><td><input id="pLaunch" type="number" value="3500"></td><td><input id="tLaunch" type="number" value="3"></td><td><input id="mLaunchPct" type="number" value="50"></td></tr>
+            <tr><td>Scale</td><td><input id="pScale" type="number" value="7500"></td><td><input id="tScale" type="number" value="6"></td><td><input id="mScalePct" type="number" value="35"></td></tr>
+            <tr><td>Transform</td><td><input id="pTransform" type="number" value="15000"></td><td><input id="tTransform" type="number" value="6"></td><td><input id="mTransformPct" type="number" value="15"></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" id="blendNote"></p>
+      <h3>Funnel &amp; costs <span class="tag">NEEDS INPUT — edit any field</span></h3>
       <div class="inputs" id="inputs2">
         <div class="inp"><label>Seminars per month</label><input id="mSeminars" type="number" value="1"><span class="u">#/mo</span></div>
         <div class="inp"><label>Attendees per seminar</label><input id="mAttendees" type="number" value="25"><span class="u">ppl</span></div>
@@ -426,8 +439,6 @@ td.num{text-align:right;font-family:'JetBrains Mono';font-size:14px;}
         <div class="inp"><label>Blueprint price</label><input id="pBlueprint" type="number" value="0"><span class="u">$</span></div>
         <div class="inp"><label>Blueprint &rarr; Engagement</label><input id="convBE" type="number" value="25"><span class="u">%</span></div>
         <div class="inp"><label>Direct / referral deals</label><input id="mDirect" type="number" value="1"><span class="u">#/mo</span></div>
-        <div class="inp"><label>Engagement value</label><input id="pEng" type="number" value="5000"><span class="u">$/mo</span></div>
-        <div class="inp"><label>Avg engagement length</label><input id="engLen" type="number" value="4"><span class="u">mo</span></div>
         <div class="inp"><label>Delivery cost / active client</label><input id="cDeliver" type="number" value="1500"><span class="u">$/mo</span></div>
         <div class="inp"><label>Workshop / intensive revenue</label><input id="mWorkshop" type="number" value="2000"><span class="u">$/mo</span></div>
         <div class="inp"><label>Marketing spend</label><input id="mMarketing" type="number" value="3000"><span class="u">$/mo</span></div>
@@ -520,8 +531,12 @@ function setScenario(btn){scenarioMult=parseFloat(btn.getAttribute('data-mult'))
 function recalc(){
   var seminars=n('mSeminars'),attendees=n('mAttendees')*scenarioMult,pSeat=n('pSeat'),cSeminar=n('cSeminar');
   var convSB=n('convSB')/100,pBlueprint=n('pBlueprint'),convBE=n('convBE')/100;
-  var direct=n('mDirect')*scenarioMult,pEng=n('pEng'),engLen=Math.max(1,Math.round(n('engLen')));
+  var direct=n('mDirect')*scenarioMult;
   var cDeliver=n('cDeliver'),workshop=n('mWorkshop'),marketing=n('mMarketing'),overhead=n('mOverhead');
+  var mix=n('mLaunchPct')+n('mScalePct')+n('mTransformPct'); if(mix<=0)mix=1;
+  var pEng=(n('pLaunch')*n('mLaunchPct')+n('pScale')*n('mScalePct')+n('pTransform')*n('mTransformPct'))/mix;
+  var engLen=Math.max(1,Math.round((n('tLaunch')*n('mLaunchPct')+n('tScale')*n('mScalePct')+n('tTransform')*n('mTransformPct'))/mix));
+  var bn=document.getElementById('blendNote'); if(bn){bn.innerHTML='Blended engagement: <strong>'+fmt(pEng)+'/mo</strong> over <strong>'+engLen+' mo</strong> &asymp; '+fmt(pEng*engLen)+' contract value. Mix % is normalized, so it needn’t sum to 100.';}
   var blueprintsMo=seminars*attendees*convSB;
   var newDeals=blueprintsMo*convBE+direct;
   var oneTime=seminars*attendees*pSeat+blueprintsMo*pBlueprint+workshop;
@@ -545,7 +560,7 @@ function recalc(){
     '<tr><td>CAC (marketing &divide; new deals)</td><td style="text-align:right">'+fmt(cac)+'</td></tr>'+
     '<tr><td>Payback period</td><td style="text-align:right">'+payback.toFixed(1)+' mo</td></tr>';
 }
-document.querySelectorAll('#inputs2 input').forEach(function(i){i.addEventListener('input',recalc);});
+document.querySelectorAll('.model input').forEach(function(i){i.addEventListener('input',recalc);});
 recalc();
 </script>
 </body>
